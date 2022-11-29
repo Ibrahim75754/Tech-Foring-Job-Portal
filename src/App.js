@@ -3,6 +3,7 @@ import './App.css';
 import Addjob from './components/AddJob/Addjob';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
+import Registration from './components/Registration/Registration';
 import Main from './layout/Main';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       ]
     },
     { path: '/login', element: <Login></Login> },
+    { path: '/registration', element: <Registration></Registration> },
   ])
   return (
     <div className="App">

@@ -12,7 +12,7 @@ import { Button, ListItem } from '@mui/material';
 import { Link, Outlet } from 'react-router-dom';
 
 
-const drawerWidth = 250;
+const drawerWidth = 200;
 
 function Main(props) {
     const { window } = props;

@@ -1,4 +1,5 @@
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Container } from '@mui/material';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -13,10 +14,11 @@ const Home = () => {
     };
 
     return (
-        <div>
+        <Container>
             <Typography variant="h5">BROWSE OPEN POSITIONS BY CATEGORY</Typography>
-            <Typography variant="subtitle1">We are always on the lookout for talanted people</Typography>
-            <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+            <Typography variant="subtitle1" sx={{ mb: 5 }}>We are always on the lookout for talanted people</Typography>
+
+            <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} sx={{ border: 2 }}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1bh-content"
@@ -88,7 +90,7 @@ const Home = () => {
                     </Typography>
                 </AccordionDetails>
             </Accordion>
-        </div>
+        </Container>
     );
 }
 export default Home;
