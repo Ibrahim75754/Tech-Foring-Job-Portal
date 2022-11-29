@@ -11,11 +11,13 @@ const useFirebase = () => {
     const [admin, setAdmin] = useState(false);
     const [token, setToken] = useState('');
 
+
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
 
     const registerUser = (email, password, name) => {
         setLoading(true);
+
         createUserWithEmailAndPassword(auth, email, password)
             .then((result) => {
 
@@ -41,6 +43,7 @@ const useFirebase = () => {
                 setAuthError(error.message);
             })
             .finally(() => setLoading(false));
+
     }
     const loginUser = (email, password) => {
         // setLoading(true);

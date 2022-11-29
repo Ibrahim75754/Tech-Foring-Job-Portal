@@ -42,6 +42,7 @@ function Main(props) {
                 <Link to="/login" style={{ color: "white", textDecoration: "none" }}>
                     <ListItem button >Login</ListItem>
                 </Link>
+                <Button>Logout</Button>
             </Box>
         </div>
     );

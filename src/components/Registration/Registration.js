@@ -12,7 +12,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import useAuth from '../../hooks/useAuth';
 
@@ -21,16 +21,17 @@ const theme = createTheme();
 
 const Registration = () => {
     const { registerUser, authError } = useAuth();
+    const navigate = useNavigate();
 
     const handleSubmit = e => {
+        e.preventDefault();
         const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(name, email, password);
 
         registerUser(email, password, name);
 
-        e.preventDefault();
+        navigate("/")
     }
 
     return (
