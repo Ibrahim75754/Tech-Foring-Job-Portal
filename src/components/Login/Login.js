@@ -13,18 +13,22 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 
 const theme = createTheme();
 
 const Login = () => {
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
+    const { loginUser, loading, authError } = useAuth();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        console.log(email, password);
+
+        loginUser(email, password)
+
     };
 
     return (
@@ -50,16 +54,14 @@ const Login = () => {
                         <Typography component="h1" variant="h5">
                             Log in
                         </Typography>
-                        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
                             <TextField
                                 margin="normal"
                                 required
                                 fullWidth
-                                id="email"
                                 label="Email Address"
                                 name="email"
-                                autoComplete="email"
-                                autoFocus
+
                             />
                             <TextField
                                 margin="normal"
@@ -75,6 +77,7 @@ const Login = () => {
                                 control={<Checkbox value="remember" color="primary" />}
                                 label="Remember me"
                             />
+
                             <Button
                                 type="submit"
                                 fullWidth
@@ -83,6 +86,7 @@ const Login = () => {
                             >
                                 Sign In
                             </Button>
+
                             <Grid container>
 
                                 <Grid item>

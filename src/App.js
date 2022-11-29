@@ -4,6 +4,7 @@ import Addjob from './components/AddJob/Addjob';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
+import AuthProvider from './contexts/AuthProvider';
 import Main from './layout/Main';
 
 function App() {
@@ -13,8 +14,8 @@ function App() {
       element: <Main></Main>,
       children: [
         { path: '/', element: <Home></Home> },
-        { path: 'home', element: <Home></Home> },
-        { path: 'addJob', element: <Addjob></Addjob> }
+        { path: '/home', element: <Home></Home> },
+        { path: '/addJob', element: <Addjob></Addjob> }
       ]
     },
     { path: '/login', element: <Login></Login> },
@@ -22,7 +23,9 @@ function App() {
   ])
   return (
     <div className="App">
-      <RouterProvider router={router}></RouterProvider>
+      <AuthProvider>
+        <RouterProvider router={router}></RouterProvider>
+      </AuthProvider>
     </div>
   );
 }

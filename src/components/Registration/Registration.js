@@ -14,18 +14,24 @@ import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
+import useAuth from '../../hooks/useAuth';
+
 
 const theme = createTheme();
 
 const Registration = () => {
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
-    };
+    const { registerUser, authError } = useAuth();
+
+    const handleSubmit = e => {
+        const name = e.target.name.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        console.log(name, email, password);
+
+        registerUser(email, password, name);
+
+        e.preventDefault();
+    }
 
     return (
         <ThemeProvider theme={theme}>
@@ -46,29 +52,18 @@ const Registration = () => {
                         <LockOutlinedIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                        Sign up
+                        Registration
                     </Typography>
-                    <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+                    <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
                         <Grid container spacing={2}>
-                            <Grid item xs={12} sm={6}>
+                            <Grid item xs={12}>
                                 <TextField
                                     autoComplete="given-name"
-                                    name="firstName"
+                                    name="name"
                                     required
                                     fullWidth
-                                    id="firstName"
-                                    label="First Name"
-                                    autoFocus
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={6}>
-                                <TextField
-                                    required
-                                    fullWidth
-                                    id="lastName"
-                                    label="Last Name"
-                                    name="lastName"
-                                    autoComplete="family-name"
+                                    id="name"
+                                    label="Full Name"
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -90,6 +85,7 @@ const Registration = () => {
                                     type="password"
                                     id="password"
                                     autoComplete="new-password"
+
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -105,7 +101,7 @@ const Registration = () => {
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
                         >
-                            Sign Up
+                            Registration
                         </Button>
                         <Grid container justifyContent="flex-end">
                             <Grid item>

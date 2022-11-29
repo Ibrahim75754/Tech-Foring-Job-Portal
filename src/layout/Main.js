@@ -39,8 +39,8 @@ function Main(props) {
                     <ListItem button className=''>Add a job</ListItem>
                 </Link>
 
-                <Link to="" style={{ color: "white", textDecoration: "none" }}>
-                    <ListItem button >Make Admin</ListItem>
+                <Link to="/login" style={{ color: "white", textDecoration: "none" }}>
+                    <ListItem button >Login</ListItem>
                 </Link>
             </Box>
         </div>
