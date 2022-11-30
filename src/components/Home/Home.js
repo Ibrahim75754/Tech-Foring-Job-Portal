@@ -10,7 +10,7 @@ import { useLoaderData } from 'react-router-dom';
 const Home = () => {
     const jobs = useLoaderData();
     console.log(jobs);
-    const [categories, setCategories] = React.useState({});
+    const [categories, setCategories] = React.useState([]);
     React.useEffect(() => {
         fetch('http://localhost:5000/categories')
             .then(res => res.json())
@@ -18,6 +18,17 @@ const Home = () => {
                 setCategories(data));
     }, []);
     console.log(categories);
+
+    const jobItem = (name) => {
+        const showJobs = jobs.filter(job => job?.categoryName === name);
+        console.log(showJobs);
+
+        return <div>
+            {
+                showJobs.map(job => <div>{job.jobName}</div>)
+            }
+        </div>
+    }
 
     const [expanded, setExpanded] = React.useState(false);
 
@@ -31,7 +42,7 @@ const Home = () => {
             <Typography variant="subtitle1" sx={{ mb: 5 }}>We are always on the lookout for talanted people</Typography>
 
             {
-                categories.map(cat => (
+                categories.map(cat =>
                     <Accordion expanded={expanded === `${cat._id}`} onChange={handleChange(`${cat._id}`)} sx={{ border: 1 }}>
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon />}
@@ -44,12 +55,13 @@ const Home = () => {
                         </AccordionSummary>
                         <AccordionDetails>
                             <Typography>
-                                Nulla facilisi. Phasellus sollicitudin nulla et quam mattis feugiat.
-                                Aliquam eget maximus est, id dignissim quam.
+                                {
+                                    jobItem(cat.categoryName)
+                                }
                             </Typography>
                         </AccordionDetails>
                     </Accordion>
-                ))
+                )
             }
 
         </Container>
