@@ -53,7 +53,7 @@ const Home = () => {
 
             {
                 categories.map(cat =>
-                    <Accordion expanded={expanded === `${cat._id}`} onChange={handleChange(`${cat._id}`)} sx={{ border: 1, bgcolor: "#EAEAEA" }}>
+                    <Accordion expanded={expanded === `${cat._id}`} onChange={handleChange(`${cat._id}`)} sx={{ bgcolor: "#F3F4F8", textAlign: 'start' }}>
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon />}
                             aria-controls="panel1bh-content"

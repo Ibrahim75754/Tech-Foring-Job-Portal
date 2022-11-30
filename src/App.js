@@ -35,7 +35,7 @@ function App() {
     { path: '/registration', element: <Registration></Registration> },
   ])
   return (
-    <div className="">
+    <div className="App">
       <AuthProvider>
         <RouterProvider router={router}></RouterProvider>
       </AuthProvider>

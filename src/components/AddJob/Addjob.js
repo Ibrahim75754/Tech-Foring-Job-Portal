@@ -62,7 +62,8 @@ const Addjob = () => {
                             label="Add New Category"
                             variant="filled"
                             name="name"
-                            placeholder='Category Name' /><br />
+                            placeholder='Category Name'
+                            required /><br />
 
                         <Button
                             sx={{ width: "50%", mb: 2 }}
