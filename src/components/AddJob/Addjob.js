@@ -5,7 +5,6 @@ import swal from 'sweetalert';
 
 const Addjob = () => {
     const categories = useLoaderData();
-    console.log(categories)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -24,13 +23,11 @@ const Addjob = () => {
                 if (data.insertedId) {
                     swal("Good job!", "Category Insert successful!", "success");
                 }
-
             })
         e.target.reset();
     }
 
     const [selectCt, setSelectCt] = useState("");
-
     const handleChange = (e) => {
         setSelectCt(e.target.value);
     };
@@ -52,7 +49,6 @@ const Addjob = () => {
                 if (data.insertedId) {
                     swal("Good job!", "Job Added successful!", "success");
                 }
-
             })
         e.target.reset();
     }
@@ -78,9 +74,6 @@ const Addjob = () => {
                 <Grid item xs={12} sx={{ mt: 16 }}>
                     <Typography variant='h5' sx={{ mb: 5 }}>Add A Job Here.</Typography>
 
-
-
-
                     <form onSubmit={addProduct}>
                         <FormControl variant="standard" required sx={{ m: 1, width: "50%" }}>
                             <InputLabel id="demo-simple-select-standard-label">Selecte Category</InputLabel>
@@ -100,7 +93,6 @@ const Addjob = () => {
                                         >{category.categoryName}</MenuItem>
                                     ))
                                 }
-
                             </Select>
                         </FormControl>
                         <TextField
@@ -118,7 +110,6 @@ const Addjob = () => {
                         >Add Job</Button>
                     </form>
                 </Grid>
-
             </Grid>
         </div>
     );

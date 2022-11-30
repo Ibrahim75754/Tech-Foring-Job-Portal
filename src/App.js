@@ -15,7 +15,13 @@ function App() {
       element: <Main></Main>,
       children: [
         { path: '/', element: <PrivateRoute><Home></Home></PrivateRoute> },
-        { path: '/home', element: <PrivateRoute><Home></Home></PrivateRoute> },
+        {
+          path: '/home',
+          loader: async () => {
+            return fetch('http://localhost:5000/jobs')
+          },
+          element: <PrivateRoute><Home></Home></PrivateRoute>
+        },
         {
           path: '/addJob',
           loader: async () => {
