@@ -4,6 +4,7 @@ import Addjob from './components/AddJob/Addjob';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
+import ViewJob from './components/ViewJob/ViewJob';
 import AuthProvider from './contexts/AuthProvider';
 import Main from './layout/Main';
 import PrivateRoute from './routes/PrivateRoute';
@@ -14,7 +15,13 @@ function App() {
       path: '/',
       element: <Main></Main>,
       children: [
-        { path: '/', element: <PrivateRoute><Home></Home></PrivateRoute> },
+        {
+          path: '/',
+          loader: async () => {
+            return fetch('http://localhost:5000/jobs')
+          },
+          element: <PrivateRoute><Home></Home></PrivateRoute>
+        },
         {
           path: '/home',
           loader: async () => {
@@ -28,6 +35,13 @@ function App() {
             return fetch('http://localhost:5000/categories')
           },
           element: <PrivateRoute><Addjob></Addjob></PrivateRoute>
+        },
+        {
+          path: '/viewJob',
+          loader: async () => {
+            return fetch('http://localhost:5000/jobs')
+          },
+          element: <PrivateRoute><ViewJob></ViewJob></PrivateRoute>
         }
       ]
     },

@@ -20,7 +20,7 @@ const Home = () => {
     console.log(categories);
 
     const jobItem = (name) => {
-        const showJobs = jobs.filter(job => job?.categoryName === name);
+        const showJobs = jobs?.filter(job => job?.categoryName === name);
         console.log(showJobs);
 
         return <div>
