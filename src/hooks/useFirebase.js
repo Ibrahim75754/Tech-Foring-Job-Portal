@@ -45,13 +45,13 @@ const useFirebase = () => {
             .finally(() => setLoading(false));
 
     }
-    const loginUser = (email, password, navigate) => {
+    const loginUser = (email, password, navigate, from) => {
         setLoading(true);
 
 
         signInWithEmailAndPassword(auth, email, password)
             .then((result) => {
-                navigate('/');
+                navigate(from, { replace: true });
 
                 setAuthError('');
             })

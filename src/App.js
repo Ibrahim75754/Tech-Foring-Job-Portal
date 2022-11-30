@@ -6,6 +6,7 @@ import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
 import AuthProvider from './contexts/AuthProvider';
 import Main from './layout/Main';
+import PrivateRoute from './routes/PrivateRoute';
 
 function App() {
   const router = createBrowserRouter([
@@ -13,9 +14,9 @@ function App() {
       path: '/',
       element: <Main></Main>,
       children: [
-        { path: '/', element: <Home></Home> },
-        { path: '/home', element: <Home></Home> },
-        { path: '/addJob', element: <Addjob></Addjob> }
+        { path: '/', element: <PrivateRoute><Home></Home></PrivateRoute> },
+        { path: '/home', element: <PrivateRoute><Home></Home></PrivateRoute> },
+        { path: '/addJob', element: <PrivateRoute><Addjob></Addjob></PrivateRoute> }
       ]
     },
     { path: '/login', element: <Login></Login> },

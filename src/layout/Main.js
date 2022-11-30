@@ -17,7 +17,7 @@ const drawerWidth = 200;
 
 function Main(props) {
     const { logout, user } = useAuth();
-    console.log(user)
+    console.log(user.email)
 
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -78,6 +78,7 @@ function Main(props) {
                     </IconButton>
 
                     <Link to=""><Button color="inherit" className="w-100 text-white text-decoration-none py-2 mb-2">Dashboard</Button></Link>
+                    { }
 
                 </Toolbar>
             </AppBar>
