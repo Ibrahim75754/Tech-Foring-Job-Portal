@@ -38,9 +38,6 @@ function App() {
         },
         {
           path: '/viewJob',
-          loader: async () => {
-            return fetch('http://localhost:5000/jobs')
-          },
           element: <PrivateRoute><ViewJob></ViewJob></PrivateRoute>
         }
       ]
