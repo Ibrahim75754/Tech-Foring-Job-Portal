@@ -10,11 +10,15 @@ import * as React from 'react';
 
 import { Button, ListItem } from '@mui/material';
 import { Link, Outlet } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
 
 
 const drawerWidth = 200;
 
 function Main(props) {
+    const { logout, user } = useAuth();
+    console.log(user)
+
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -22,6 +26,9 @@ function Main(props) {
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
+    const logOut = () => {
+        logout();
+    }
 
     const drawer = (
         <div style={{ backgroundColor: "#653DF5", height: "100vh", color: "white" }}>
@@ -42,7 +49,7 @@ function Main(props) {
                 <Link to="/login" style={{ color: "white", textDecoration: "none" }}>
                     <ListItem button >Login</ListItem>
                 </Link>
-                <Button>Logout</Button>
+                <Button onClick={logOut}>Logout</Button>
             </Box>
         </div>
     );

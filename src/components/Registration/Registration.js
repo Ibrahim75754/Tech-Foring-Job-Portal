@@ -1,4 +1,5 @@
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { Alert } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -29,9 +30,8 @@ const Registration = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        registerUser(email, password, name);
+        registerUser(email, password, name, navigate);
 
-        navigate("/")
     }
 
     return (
@@ -96,6 +96,7 @@ const Registration = () => {
                                 />
                             </Grid>
                         </Grid>
+                        {authError && <Alert sx={{ width: "1", m: 1 }} severity="error">{authError}</Alert>}
                         <Button
                             type="submit"
                             fullWidth

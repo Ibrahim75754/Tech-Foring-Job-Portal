@@ -1,4 +1,5 @@
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { Alert } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -27,9 +28,7 @@ const Login = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        loginUser(email, password);
-
-        navigate("/")
+        loginUser(email, password, navigate);
 
     };
 
@@ -79,7 +78,7 @@ const Login = () => {
                                 control={<Checkbox value="remember" color="primary" />}
                                 label="Remember me"
                             />
-
+                            {authError && <Alert sx={{ width: "1", m: 1 }} severity="error">{authError}</Alert>}
                             <Button
                                 type="submit"
                                 fullWidth
