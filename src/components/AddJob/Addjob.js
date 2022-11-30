@@ -32,16 +32,28 @@ const Addjob = () => {
     const [selectCt, setSelectCt] = useState("");
 
     const handleChange = (e) => {
-
         setSelectCt(e.target.value);
     };
-    console.log(selectCt);
 
     const addProduct = (e) => {
         e.preventDefault();
-        console.log(e.target.name.value)
-
         const jobName = e.target.name.value;
+        const data = { categoryName: selectCt, jobName: jobName }
+        console.log(data);
+        fetch(`http://localhost:5000/jobs`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    swal("Good job!", "Job Added successful!", "success");
+                }
+
+            })
         e.target.reset();
     }
     return (
