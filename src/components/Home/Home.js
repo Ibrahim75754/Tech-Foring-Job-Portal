@@ -1,5 +1,5 @@
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Container } from '@mui/material';
+import { Box, Button, Container } from '@mui/material';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -25,7 +25,17 @@ const Home = () => {
 
         return <div>
             {
-                showJobs.map(job => <div>{job.jobName}</div>)
+                showJobs.map(job =>
+                    <Box sx={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+
+
+                    }}>
+                        <Typography variant='body1' gutterBottom sx={{ bgcolor: "white", p: 1, width: '85%' }}>{job.jobName} </Typography>
+                        <Button sx={{ height: '40px', width: '15%', bgcolor: '#182F59', color: 'white' }}>Apply Now</Button>
+                    </Box>)
             }
         </div>
     }
@@ -43,22 +53,22 @@ const Home = () => {
 
             {
                 categories.map(cat =>
-                    <Accordion expanded={expanded === `${cat._id}`} onChange={handleChange(`${cat._id}`)} sx={{ border: 1 }}>
+                    <Accordion expanded={expanded === `${cat._id}`} onChange={handleChange(`${cat._id}`)} sx={{ border: 1, bgcolor: "#EAEAEA" }}>
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon />}
                             aria-controls="panel1bh-content"
                             id="panel1bh-header"
                         >
-                            <Typography sx={{ width: '33%', flexShrink: 0 }}>
+                            <Typography variant='h6' sx={{ width: '33%', flexShrink: 0 }}>
                                 {cat.categoryName}
                             </Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-                            <Typography>
+                            <Box>
                                 {
                                     jobItem(cat.categoryName)
                                 }
-                            </Typography>
+                            </Box>
                         </AccordionDetails>
                     </Accordion>
                 )

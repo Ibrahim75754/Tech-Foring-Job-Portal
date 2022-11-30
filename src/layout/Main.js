@@ -31,7 +31,7 @@ function Main(props) {
     }
 
     const drawer = (
-        <div style={{ backgroundColor: "#653DF5", height: "100vh", color: "white" }}>
+        <div style={{ backgroundColor: "#182F59", height: "100vh", color: "white" }}>
             <Toolbar >
                 <h1 className="text-bold d-inline custom-font" style={{ marginTop: "15px" }}>Job Portal</h1>
             </Toolbar>
@@ -63,7 +63,7 @@ function Main(props) {
                 position="fixed"
                 sx={{
                     width: { sm: `calc(100% - ${drawerWidth}px)` },
-                    ml: { sm: `${drawerWidth}px` }, backgroundColor: "#653DF5"
+                    ml: { sm: `${drawerWidth}px` }, backgroundColor: "#182F59"
                 }}
             >
                 <Toolbar>
