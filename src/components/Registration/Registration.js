@@ -14,23 +14,61 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
 
-import useAuth from '../../hooks/useAuth';
 
 
 const theme = createTheme();
 
 const Registration = () => {
-    const { registerUser, authError } = useAuth();
+    const [authError, setAuthError] = React.useState('');
+
     const navigate = useNavigate();
 
+    const { createUser, updateUser, } = React.useContext(AuthContext)
     const handleSubmit = e => {
         e.preventDefault();
         const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        registerUser(email, password, name, navigate);
+        // createUser(email, password)
+        //     .then(result => {
+        //         const user = result.user;
+        //         console.log(user)
+        //         navigate('/')
+        //         const userInfo = {
+        //             displayName: name
+        //         }
+        //         updateUser(userInfo)
+        //             .then(() => {
+
+        //             })
+        //     })
+        //     .catch(error => {
+        //         setAuthError(error.message);
+
+        //     });
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+
+                const userInfo = {
+                    displayName: name
+                }
+                updateUser(userInfo)
+                    .then(() => {
+
+                    })
+                    .catch(err => console.log(err))
+                navigate('/login')
+            })
+
+            .catch(error => {
+                setAuthError(error.message)
+
+            });
 
     }
 

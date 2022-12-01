@@ -14,24 +14,34 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
+import { AuthContext } from '../../contexts/AuthProvider';
+
 
 
 const theme = createTheme();
 
 const Login = () => {
-    const { loginUser, loading, authError } = useAuth();
+    const [authError, setAuthError] = React.useState('');
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/'
 
+    const { signIn, setLoading } = React.useContext(AuthContext)
     const handleSubmit = (e) => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        loginUser(email, password, navigate, from);
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                setLoading(false)
+                navigate(from, { replace: true });
 
+            })
+            .catch(error => {
+                setAuthError(error.message)
+            })
     };
 
     return (

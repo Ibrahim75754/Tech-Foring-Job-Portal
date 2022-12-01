@@ -1,3 +1,5 @@
+import { initializeApp } from "firebase/app";
+
 const firebaseConfig = {
   apiKey: "AIzaSyAEarjb6P9xNWEDYjkuM9T5dCNXsyjKHZA",
   authDomain: "techforing-job-portal.firebaseapp.com",
@@ -6,5 +8,6 @@ const firebaseConfig = {
   messagingSenderId: "199783511752",
   appId: "1:199783511752:web:32843b17c0650947ae57fd"
 };
+const app = initializeApp(firebaseConfig)
 
-export default firebaseConfig;
+export default app;

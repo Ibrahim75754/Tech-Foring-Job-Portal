@@ -10,14 +10,25 @@ import * as React from 'react';
 
 import { Button, ListItem, Typography } from '@mui/material';
 import { Link, Outlet } from 'react-router-dom';
-import useAuth from '../hooks/useAuth';
+import { AuthContext } from '../contexts/AuthProvider';
 
 
 const drawerWidth = 200;
 
 function Main(props) {
-    const { logout, user } = useAuth();
+
+
+    const { user, logOut } = React.useContext(AuthContext);
     console.log(user)
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+
+            })
+            .catch(err => console.log(err))
+
+    }
 
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -26,9 +37,6 @@ function Main(props) {
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
-    const logOut = () => {
-        logout();
-    }
 
     const drawer = (
         <div style={{ backgroundColor: "#182F59", height: "100vh", color: "white" }}>
@@ -49,7 +57,7 @@ function Main(props) {
                     <ListItem button className=''>View All Job</ListItem>
                 </Link>
 
-                <Button variant="contained" sx={{ width: "1", mt: 5 }} onClick={logOut}>Log Out</Button>
+                <Button variant="contained" sx={{ width: "1", mt: 5 }} onClick={handleLogOut}>Log Out</Button>
 
 
             </Box>
@@ -79,7 +87,7 @@ function Main(props) {
                         <MenuIcon />
                     </IconButton>
 
-                    <Typography>Hello, {user.displayName}</Typography>
+                    <Typography>Hello, {user?.displayName}</Typography>
 
                 </Toolbar>
             </AppBar>
