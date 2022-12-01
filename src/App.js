@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Addjob from './components/AddJob/Addjob';
 import Home from './components/Home/Home';
+import JobEdit from './components/JobEdit/JobEdit';
 import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
 import ViewJob from './components/ViewJob/ViewJob';
@@ -39,7 +40,14 @@ function App() {
         {
           path: '/viewJob',
           element: <PrivateRoute><ViewJob></ViewJob></PrivateRoute>
-        }
+        },
+        {
+          path: '/viewJob/:editId',
+          loader: async ({ params }) => {
+            return fetch(`http://localhost:5000/jobs/${params.editId}`)
+          },
+          element: <PrivateRoute><JobEdit></JobEdit></PrivateRoute>
+        },
       ]
     },
     { path: '/login', element: <Login></Login> },

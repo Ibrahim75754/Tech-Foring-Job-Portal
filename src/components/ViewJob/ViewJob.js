@@ -2,6 +2,7 @@ import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRo
 import Paper from '@mui/material/Paper';
 import { Container } from '@mui/system';
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 
 
@@ -49,10 +50,10 @@ const ViewJob = () => {
                 <Table sx={{ minWidth: 650 }} aria-label="a dense table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>Serial no.</TableCell>
-                            <TableCell>Category Name</TableCell>
-                            <TableCell>Job Name</TableCell>
-                            <TableCell align="center">Action</TableCell>
+                            <TableCell sx={{ fontSize: '20px' }}>Serial no.</TableCell>
+                            <TableCell sx={{ fontSize: '20px' }}>Category Name</TableCell>
+                            <TableCell sx={{ fontSize: '20px' }}>Job Name</TableCell>
+                            <TableCell align="center" sx={{ fontSize: '20px' }}>Action</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -70,7 +71,9 @@ const ViewJob = () => {
                                 <TableCell >{row.jobName}</TableCell>
 
                                 <TableCell align="center">
-                                    <Button sx={{ bgcolor: '#182F59', color: 'white', mr: 2 }}>Edit</Button><Button onClick={() => handleDelete(row._id)} sx={{ bgcolor: 'red', color: 'white' }}>Delete</Button></TableCell>
+                                    <Link to={`${row._id}`}>
+                                        <Button sx={{ bgcolor: '#182F59', color: 'white', mr: 2 }}>Edit</Button></Link>
+                                    <Button onClick={() => handleDelete(row._id)} sx={{ bgcolor: 'red', color: 'white' }}>Delete</Button></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
