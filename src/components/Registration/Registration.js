@@ -32,27 +32,10 @@ const Registration = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        // createUser(email, password)
-        //     .then(result => {
-        //         const user = result.user;
-        //         console.log(user)
-        //         navigate('/')
-        //         const userInfo = {
-        //             displayName: name
-        //         }
-        //         updateUser(userInfo)
-        //             .then(() => {
-
-        //             })
-        //     })
-        //     .catch(error => {
-        //         setAuthError(error.message);
-
-        //     });
         createUser(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user)
+
 
                 const userInfo = {
                     displayName: name

@@ -19,21 +19,21 @@ function App() {
         {
           path: '/',
           loader: async () => {
-            return fetch('http://localhost:5000/jobs')
+            return fetch('https://tech-foring-job-portal-server.vercel.app/jobs')
           },
           element: <PrivateRoute><Home></Home></PrivateRoute>
         },
         {
           path: '/home',
           loader: async () => {
-            return fetch('http://localhost:5000/jobs')
+            return fetch('https://tech-foring-job-portal-server.vercel.app/jobs')
           },
           element: <PrivateRoute><Home></Home></PrivateRoute>
         },
         {
           path: '/addJob',
           loader: async () => {
-            return fetch('http://localhost:5000/categories')
+            return fetch('https://tech-foring-job-portal-server.vercel.app/categories')
           },
           element: <PrivateRoute><Addjob></Addjob></PrivateRoute>
         },

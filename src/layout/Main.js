@@ -16,10 +16,7 @@ import { AuthContext } from '../contexts/AuthProvider';
 const drawerWidth = 200;
 
 function Main(props) {
-
-
     const { user, logOut } = React.useContext(AuthContext);
-    console.log(user)
 
     const handleLogOut = () => {
         logOut()

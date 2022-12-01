@@ -11,7 +11,7 @@ const Addjob = () => {
         const category = e.target.name.value;
         const data = { categoryName: category }
 
-        fetch(`http://localhost:5000/categories`, {
+        fetch(`https://tech-foring-job-portal-server.vercel.app/categories`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -36,8 +36,8 @@ const Addjob = () => {
         e.preventDefault();
         const jobName = e.target.name.value;
         const data = { categoryName: selectCt, jobName: jobName }
-        console.log(data);
-        fetch(`http://localhost:5000/jobs`, {
+
+        fetch(`https://tech-foring-job-portal-server.vercel.app/jobs`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

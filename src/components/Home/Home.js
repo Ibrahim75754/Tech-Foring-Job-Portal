@@ -9,19 +9,17 @@ import { useLoaderData } from 'react-router-dom';
 
 const Home = () => {
     const jobs = useLoaderData();
-    console.log(jobs);
+
     const [categories, setCategories] = React.useState([]);
     React.useEffect(() => {
-        fetch('http://localhost:5000/categories')
+        fetch('https://tech-foring-job-portal-server.vercel.app/categories')
             .then(res => res.json())
             .then(data =>
                 setCategories(data));
     }, []);
-    console.log(categories);
 
     const jobItem = (name) => {
         const showJobs = jobs?.filter(job => job?.categoryName === name);
-        console.log(showJobs);
 
         return <div>
             {

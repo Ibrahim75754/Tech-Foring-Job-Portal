@@ -7,7 +7,7 @@ const JobEdit = () => {
     const { editId } = useParams();
     const [job, setJob] = useState({});
     useEffect(() => {
-        fetch(`http://localhost:5000/jobs/${editId}`)
+        fetch(`https://tech-foring-job-portal-server.vercel.app/jobs/${editId}`)
             .then(res => res.json())
             .then(data =>
                 setJob(data));
@@ -22,7 +22,7 @@ const JobEdit = () => {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(`http://localhost:5000/jobs/edit/${job._id}`, {
+        fetch(`https://tech-foring-job-portal-server.vercel.app/jobs/edit/${job._id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

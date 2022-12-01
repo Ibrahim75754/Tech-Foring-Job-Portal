@@ -9,7 +9,7 @@ import swal from 'sweetalert';
 const ViewJob = () => {
     const [jobs, setJobs] = React.useState([]);
     React.useEffect(() => {
-        fetch('http://localhost:5000/jobs')
+        fetch('https://tech-foring-job-portal-server.vercel.app/jobs')
             .then(res => res.json())
             .then(data => setJobs(data));
     }, []);
@@ -24,7 +24,7 @@ const ViewJob = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`http://localhost:5000/jobs/${id}`, {
+                    fetch(`https://tech-foring-job-portal-server.vercel.app/jobs/${id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())
