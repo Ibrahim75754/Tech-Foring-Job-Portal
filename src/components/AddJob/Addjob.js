@@ -1,4 +1,4 @@
-import { Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
+import { Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import swal from 'sweetalert';
@@ -56,6 +56,7 @@ const Addjob = () => {
         <div>
             <Grid container spacing={2} sx={{ mt: 8 }}>
                 <Grid item xs={12}>
+                    <h1>Add New Category</h1>
                     <form onSubmit={handleSubmit}>
                         <TextField
                             sx={{ width: "50%", mb: 2 }}
@@ -72,9 +73,8 @@ const Addjob = () => {
                         >Add Category</Button>
                     </form>
                 </Grid>
-                <Grid item xs={12} sx={{ mt: 16 }}>
-                    <Typography variant='h5' sx={{ mb: 5 }}>Add A Job Here.</Typography>
-
+                <Grid item xs={12} sx={{ mt: 8 }}>
+                    <h1>Edit Job Here :</h1>
                     <form onSubmit={addProduct}>
                         <FormControl variant="standard" required sx={{ m: 1, width: "50%" }}>
                             <InputLabel id="demo-simple-select-standard-label">Selecte Category</InputLabel>
