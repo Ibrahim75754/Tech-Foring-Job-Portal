@@ -43,15 +43,18 @@ function App() {
         },
         {
           path: '/viewJob/:editId',
-          loader: async ({ params }) => {
-            return fetch(`http://localhost:5000/jobs/${params.editId}`)
-          },
           element: <PrivateRoute><JobEdit></JobEdit></PrivateRoute>
         },
       ]
     },
-    { path: '/login', element: <Login></Login> },
-    { path: '/registration', element: <Registration></Registration> },
+    {
+      path: '/login',
+      element: <Login></Login>
+    },
+    {
+      path: '/registration',
+      element: <Registration></Registration>
+    },
   ])
   return (
     <div className="App">
