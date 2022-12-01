@@ -8,7 +8,7 @@ import Toolbar from '@mui/material/Toolbar';
 import PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { Button, ListItem } from '@mui/material';
+import { Button, ListItem, Typography } from '@mui/material';
 import { Link, Outlet } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 
@@ -17,7 +17,7 @@ const drawerWidth = 200;
 
 function Main(props) {
     const { logout, user } = useAuth();
-    console.log(user.email)
+    console.log(user)
 
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -49,6 +49,8 @@ function Main(props) {
                     <ListItem button className=''>View All Job</ListItem>
                 </Link>
 
+                <Button variant="contained" sx={{ width: "1", mt: 5 }} onClick={logOut}>Log Out</Button>
+
 
             </Box>
         </div>
@@ -77,8 +79,7 @@ function Main(props) {
                         <MenuIcon />
                     </IconButton>
 
-                    <Link to=""><Button color="inherit" className="w-100 text-white text-decoration-none py-2 mb-2">Dashboard</Button></Link>
-                    { }
+                    <Typography>Hello, {user.displayName}</Typography>
 
                 </Toolbar>
             </AppBar>
